@@ -1,58 +1,57 @@
-import { Component, OnInit } from '@angular/core';
-
-
+import { EmailService } from 'app/email.service';
+import { Component, OnInit} from '@angular/core';
 
 
 @Component({
-  selector: 'app-new-component',
-  templateUrl: './new-component.component.html',
-  styleUrls: ['./new-component.component.css']
+  selector: 'app-course',
+  templateUrl: './course.component.html',
+  styleUrls: ['./course.component.css']
 })
-export class NewComponentComponent {
-	
-
- 
-
+export class CourseComponent implements OnInit {
+	specific_name : Object
+	Title = "Name of Courses";
+/*Courses :[{
+        id: string,
+        name : string,
+        
+    }];*/
+	Courses: any[];
   
-  welcome: string;
-    games : [{
-		index: number,
-        game: string,
-        platform : string,
-        release : string
-    }];
+	           
 	
- 
-    
-    constructor(){
-        this.welcome = "Search Criteria"
 
-        this.games = [{
-			index: 1,
-            game : "Deus Ex: Mankind Divided",
-            platform: " Xbox One, PS4, PC",
-            release : "August 23"
-        },
-        {
-			index: 2,
-            game : "Hue",
-            platform: " Xbox One, PS4, Vita, PC",
-            release : "August 23"
-        },
-        {
-			index: 3,
-            game : "The Huntsman: Winter's Curse",
-            platform: "PS4",
-            release : "August 23"
-        },
-        {
-			index: 4,
-            game : "The Huntsman: Winter's Curse",
-            platform: "PS4",
-            release : "August 23"
-        }]
-    };
-/*ngOnInit() {
+  constructor(service: EmailService) {
+this.Courses = service.getCourses();
+// Make instance/object of Service
+//But this method is not good for unit testing coz objects are tightely coupled. 
+
+/*let service = new EmailService();
+this.Courses = service.getCourses(); */
+
+// DEPENDENCY INJECTION
+
+
+  }
+/*  OnKeyUp(){
 	
-  }	*/
+	console.log(this.search);
+	
+}*/
+/*row(Courses){
+	
+console.log(this.Courses.name);
+
+	
+	
+}*/
+myDate = new Date();
+clicked(C: any){
+
+    this.specific_name = C
+
+  }
+  ngOnInit() {
+  }
+
 }
+
