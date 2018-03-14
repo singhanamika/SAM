@@ -1,29 +1,33 @@
-<!--<input [(ngModel)]="searchText" placeholder="search text goes here">
-<ul>
-  <li *ngFor="let c of content | filter : searchText"> </li>
-    <li *ngFor="let key of c | keys">{{key}}: {{c[key]}}</li>
-  
-</ul> 
-<input [(ngModel)]="searchText" placeholder="search text goes here">
-<tr *ngFor="let c of content | filter : searchText">           
-  <td *ngFor="let key of c | keys">{{key}}: {{c[key]}}</td>
-</tr>-->
-<h1>{{welcome}}</h1>
-<label> Party Group <input  type="String"  [(ngModel)]="searchText" placeholder="search text goes here"> </label>
-<button Onclick="onClickMe()"> Enter! </button>
-<ng-datepicker [(ngModel)]="date"></ng-datepicker>
+<h1>{{Title}}</h1>
 
-                <table class="table">
-                    <tr>
-                        <th>#</th>
-                        <th>Game</th>
-                        <th>Platform</th> 
-                        <th>Release</th>
-                    </tr>
-                    <tr *ngFor="let g of games| filter : searchText">
-                       <td>{{g.index}}</td> 
-                        <td>{{g.game}}</td>
-                        <td>{{g.platform}}</td>
-                        <td>{{g.release}}</td> 
-                    </tr>
-                </table>`
+<input [(ngModel)]="search" (keyup.enter) = "OnKeyUp()"/>
+<ul>
+<li *ngFor = "let C of Courses| filter : search" (click)= "clicked(C)">
+{{ C.id}} 
+{{C.name}}
+
+</li>
+<!--<label>
+    Date
+    <input [owlDateTimeTrigger]="dt3" [owlDateTime]="dt3">
+    <owl-date-time [pickerType]="'calendar'" #dt3></owl-date-time>
+</label> 
+<form #form="ngForm">
+    <date-picker ngModel name="date"></date-picker>
+</form>
+
+
+     <ng-datepicker [(ngModel)]="date"></ng-datepicker> -->
+	 
+	<md-input-container>
+    <input mdInput [mdDatepicker]="picker" placeholder="Choose a date">
+    <button mdSuffix [mdDatepickerToggle]="picker"></button>
+</md-input-container>
+<md-datepicker #picker></md-datepicker>
+<div class="mdl-cell mdl-cell--4-col">
+        <div *ngIf="specific_name">
+            
+            <h3>Name: {{ specific_name.name  }}</h3>
+          
+        </div>  
+    </div>
